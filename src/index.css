@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* 기본 타이포그래피 설정 */
+  html {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* 제목 요소들의 기본 행간 설정 */
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  /* 본문 텍스트 최적화 */
+  p {
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+  
+  /* 버튼 텍스트 최적화 */
+  button {
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
+}
+
+@layer components {
+  /* 카드 컨테이너 기본 스타일 */
+  .card-container {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden;
+  }
+  
+  /* 텍스트 컨테이너 - 적절한 패딩과 여백 보장 */
+  .text-container {
+    @apply px-4 py-3 sm:px-6 sm:py-4;
+  }
+  
+  /* 제목 스타일 통일 */
+  .section-title {
+    @apply text-xl sm:text-2xl font-bold text-gray-900 mb-2 leading-tight;
+  }
+  
+  .subsection-title {
+    @apply text-lg sm:text-xl font-semibold text-gray-900 mb-3 leading-tight;
+  }
+  
+  /* 설명 텍스트 스타일 */
+  .description-text {
+    @apply text-sm sm:text-base text-gray-600 leading-relaxed;
+  }
+  
+  /* 통계 수치 스타일 - 대시보드 박스용 개선 */
+  .stat-value {
+    @apply text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-none;
+  }
+  
+  .stat-label {
+    @apply text-sm sm:text-base font-medium text-gray-600 leading-tight;
+  }
+  
+  /* 대시보드 통계 박스 전용 스타일 */
+  .dashboard-stat-value {
+    @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-none;
+    min-height: 2.5rem;
+  }
+  
+  .dashboard-stat-label {
+    @apply text-sm sm:text-base font-medium text-gray-600 leading-tight mb-2;
+    min-height: 1.25rem;
+  }
+  
+  /* 버튼 텍스트 최적화 */
+  .btn-text {
+    @apply text-sm sm:text-base font-medium leading-none;
+  }
+  
+  /* 반응형 그리드 간격 */
+  .responsive-grid {
+    @apply grid gap-4 sm:gap-6;
+  }
+  
+  /* 모바일 최적화 패딩 */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* 텍스트 말줄임 처리 */
+  .text-truncate {
+    @apply truncate;
+  }
+  
+  .text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .text-truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* 반응형 텍스트 크기 조정 */
+@media (max-width: 640px) {
+  .responsive-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .responsive-text-base {
+    font-size: 1rem;
+  }
+  
+  .responsive-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  /* 모바일에서 대시보드 통계 박스 최소 크기 보장 */
+  .dashboard-stat-container {
+    min-height: 120px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .responsive-text-sm {
+    font-size: 0.9375rem;
+  }
+  
+  .responsive-text-base {
+    font-size: 1.0625rem;
+  }
+  
+  .responsive-text-lg {
+    font-size: 1.1875rem;
+  }
+  
+  /* 태블릿에서 대시보드 통계 박스 최소 크기 보장 */
+  .dashboard-stat-container {
+    min-height: 140px;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* 데스크톱에서 대시보드 통계 박스 최소 크기 보장 */
+  .dashboard-stat-container {
+    min-height: 160px;
+  }
+}
+
+/* 고해상도 디스플레이 최적화 */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* 고해상도에서 텍스트 선명도 향상 */
+  .stat-value, .dashboard-stat-value {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* 접근성 향상을 위한 포커스 스타일 */
+@media (prefers-reduced-motion: no-preference) {
+  .card-container {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .card-container:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}
+
+/* 다크 모드 대응 (향후 확장용) */
+@media (prefers-color-scheme: dark) {
+  .stat-value, .dashboard-stat-value {
+    color: #1f2937;
+  }
+}
